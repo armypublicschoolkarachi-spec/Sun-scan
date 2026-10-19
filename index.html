@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d16">
+  <meta name="description" content="Sun Scan — browse series, follow releases, and read chapters.">
+  <title>Sun Scan — Manhwa Archive</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="site-header">
+    <a class="brand" href="#" data-action="home" aria-label="Sun Scan home">
+      <span class="brand-mark">S<span>☼</span></span><span class="brand-name">SUN<span>SCAN</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-link active" data-action="home">Home</button>
+      <button class="nav-link" data-action="browse">Browse</button>
+      <button class="nav-link" data-action="latest">Latest</button>
+      <button class="nav-link" data-action="saved">My List <span id="saved-count" class="tiny-count">0</span></button>
+    </nav>
+    <label class="header-search"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Search series..." autocomplete="off" aria-label="Search series"><kbd>/</kbd></label>
+    <button class="mobile-menu" id="mobile-menu" aria-label="Toggle menu">☰</button>
+  </header>
+
+  <main id="app" tabindex="-1">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> YOUR NEXT OBSESSION STARTS HERE</div>
+        <h1>Stories worth<br><em>staying up for.</em></h1>
+        <p>Explore series, keep up with releases, and pick up right where you left off.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-action="browse">Explore library <span>↗</span></button>
+          <button class="btn btn-ghost" data-action="latest">Latest updates <span>→</span></button>
+        </div>
+        <div class="hero-stats"><div><strong id="stat-series">06</strong><span>Series in demo</span></div><div><strong>VERTICAL</strong><span>Reader mode</span></div><div><strong>01</strong><span>Place to start</span></div></div>
+      </div>
+      <div class="hero-art" aria-label="Featured series artwork">
+        <div class="hero-orbit orbit-a"></div><div class="hero-orbit orbit-b"></div>
+        <div class="hero-moon"></div>
+        <div class="hero-poster">
+          <div class="poster-top">SUN SCAN ORIGINALS <span>№ 001</span></div>
+          <div class="poster-art"><div class="poster-sun"></div><div class="poster-silhouette"></div><div class="poster-blade"></div></div>
+          <div class="poster-title">AFTER<br><i>THE FALL</i></div>
+          <div class="poster-bottom"><span>FANTASY · ACTION</span><span>CH. 018</span></div>
+        </div>
+        <div class="floating-tag tag-top"><span class="tag-icon">✦</span><span><b>Fresh chapters</b><small>Updated regularly</small></span></div>
+        <div class="floating-tag tag-bottom"><span class="tag-number">01</span><span><b>Made for readers</b><small>One chapter at a time</small></span></div>
+      </div>
+    </section>
+
+    <section class="shell section" id="featured-section">
+      <div class="section-heading"><div><span class="section-kicker">PICK YOUR NEXT READ</span><h2>Featured series <span class="heading-dot">.</span></h2></div><button class="text-link" data-action="browse">View library <span>→</span></button></div>
+      <div class="featured-grid" id="featured-grid"></div>
+    </section>
+
+    <section class="shell section updates-section" id="latest-section">
+      <div class="section-heading"><div><span class="section-kicker">DON'T MISS A DROP</span><h2>Latest updates <span class="heading-dot">.</span></h2></div><button class="text-link" data-action="latest">All releases <span>→</span></button></div>
+      <div class="updates-layout"><div class="release-list" id="release-list"></div><aside class="side-panel"><div class="side-panel-top"><span class="section-kicker">QUICK FILTER</span><span class="filter-symbol">⌁</span></div><h3>Find your<br>kind of story.</h3><p>Jump into a genre and see what catches your eye.</p><div class="genre-chips" id="genre-chips"></div><div class="side-note"><span class="note-star">✳</span><span>Independent archive.<br><b>Built around the reading experience.</b></span></div></aside></div>
+    </section>
+
+    <section class="shell section library-section" id="library-section">
+      <div class="section-heading"><div><span class="section-kicker">THE WHOLE SHELF</span><h2 id="library-title">Browse the library <span class="heading-dot">.</span></h2></div><div class="library-controls"><select id="genre-select" aria-label="Filter by genre"><option value="All">All genres</option></select><select id="sort-select" aria-label="Sort series"><option value="featured">Featured</option><option value="title">Title A–Z</option><option value="updated">Recently updated</option></select></div></div>
+      <div class="series-grid" id="series-grid"></div>
+      <div id="empty-state" class="empty-state" hidden><div>⌕</div><h3>No series found</h3><p>Try a different title or genre.</p><button class="btn btn-ghost" data-action="browse">Clear filters</button></div>
+    </section>
+  </main>
+
+  <footer class="site-footer shell"><a class="brand footer-brand" href="#" data-action="home"><span class="brand-mark">S<span>☼</span></span><span class="brand-name">SUN<span>SCAN</span></span></a><p>Built for the love of stories.</p><span class="footer-meta">SUN SCAN © <span id="year"></span> · DEMO ARCHIVE</span></footer>
+
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <section class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+      <div id="modal-content"></div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
